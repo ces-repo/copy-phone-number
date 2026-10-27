@@ -114,18 +114,38 @@ function numberFromTelLink(url) {
   return value;
 }
 
-// One menu entry for tel: links and text selections. Two separate entries
-// would both match a selected tel: link, and Thunderbird then groups them
-// into a submenu.
+// tel: links get their own entry, filtered by URL pattern.
 browser.menus.create({
-  id: "copy-phone",
+  id: "copy-phone-link",
   title: "Rufnummer kopieren",
-  contexts: ["link", "selection"],
+  contexts: ["link"],
   targetUrlPatterns: ["tel:*"],
 });
 
+// Text selections get a second entry. Its content is only checked on click,
+// because onShown does not receive selectionText for message content.
+browser.menus.create({
+  id: "copy-phone-selection",
+  title: "Rufnummer kopieren",
+  contexts: ["selection"],
+});
+
+// A selected tel: link would match both entries and Thunderbird would group
+// them into a submenu. Hide the selection entry whenever a link was clicked;
+// the tel: link entry covers that case.
+browser.menus.onShown.addListener((info) => {
+  if (!info.menuIds.includes("copy-phone-selection")) return;
+  const onLink = info.contexts.includes("link");
+  browser.menus.update("copy-phone-selection", { visible: !onLink });
+  browser.menus.refresh();
+});
+
+browser.menus.onHidden.addListener(() => {
+  browser.menus.update("copy-phone-selection", { visible: true });
+});
+
 browser.menus.onClicked.addListener(async (info) => {
-  if (info.menuItemId !== "copy-phone") return;
+  if (info.menuItemId !== "copy-phone-link" && info.menuItemId !== "copy-phone-selection") return;
 
   let raw = null;
   if (info.linkUrl?.startsWith("tel:")) {

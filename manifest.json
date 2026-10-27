@@ -2,7 +2,7 @@
   "manifest_version": 2,
   "name": "Copy Phone Number (Swiss)",
   "description": "Adds a right-click menu item to copy a phone number (from tel: links or selected text) to the clipboard, formatted as +41 XX XXX XX XX.",
-  "version": "1.0.3",
+  "version": "1.0.5",
   "author": "C|E|S Catering & Event Services",
   "browser_specific_settings": {
     "gecko": {
