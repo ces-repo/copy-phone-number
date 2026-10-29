@@ -1,0 +1,64 @@
+body {
+  font: message-box;
+  font-size: 14px;
+  max-width: 560px;
+  margin: 24px;
+  color: #1a1a1a;
+}
+
+h1 {
+  font-size: 20px;
+  margin: 0 0 20px;
+}
+
+label[for="country"] {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+select {
+  font-size: 14px;
+  padding: 4px 6px;
+  min-width: 260px;
+}
+
+.hint {
+  color: #555;
+  margin: 8px 0 20px;
+  line-height: 1.45;
+}
+
+fieldset {
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  padding: 10px 14px 12px;
+}
+
+legend {
+  font-weight: 600;
+  padding: 0 4px;
+}
+
+fieldset label {
+  display: block;
+  margin: 6px 0;
+}
+
+.example {
+  color: #555;
+  font-family: monospace;
+  margin-left: 6px;
+}
+
+.status {
+  color: #2e7d32;
+  min-height: 1.4em;
+}
+
+@media (prefers-color-scheme: dark) {
+  body { color: #eee; background: #1c1b22; }
+  .hint, .example { color: #aaa; }
+  fieldset { border-color: #555; }
+  .status { color: #81c784; }
+}

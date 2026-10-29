@@ -1,12 +1,14 @@
-# Copy Phone Number (Swiss)
+# Copy Phone Number
 
 Thunderbird add-on that adds **"Rufnummer kopieren"** (copy phone number) to the right-click menu.
-It copies the number to the clipboard in Swiss international format: `+41 XX XXX XX XX`.
+It copies the number to the clipboard in international format. The country is detected from `+CC` / `00CC`;
+numbers without a country code use the default country from the options (Switzerland unless changed).
 
 Thunderbird-Add-on: Rechtsklick auf einen `tel:`-Link oder eine markierte Telefonnummer → **Rufnummer kopieren**.
-Die Nummer landet formatiert als `+41 XX XXX XX XX` in der Zwischenablage.
+Die Nummer landet international formatiert in der Zwischenablage, z. B. `+41 44 123 45 67`.
+Das Land wird an der Vorwahl erkannt; für Nummern ohne Ländervorwahl gilt das Land aus den Einstellungen (Standard: Schweiz).
 
-## Examples
+## Examples (default country Switzerland)
 
 | Input | Copied |
 |---|---|
@@ -14,9 +16,17 @@ Die Nummer landet formatiert als `+41 XX XXX XX XX` in der Zwischenablage.
 | `0041 44 123 45 67` | `+41 44 123 45 67` |
 | `+41 (0)44 123 45 67` | `+41 44 123 45 67` |
 | `+423 234 56 78` | `+423 234 56 78` |
-| `+49 30 12345678` | `+49 3012345678` |
+| `+49 (0)30 1234 5678` | `+49 30 1234 5678` |
+| `+39 02 1234 5678` | `+39 02 1234 5678` |
+| `+1 212 555 0100` | `+1 212 555 0100` |
 
-Numbers without a country code are treated as Swiss.
+## Options
+
+*Add-ons and Themes → Copy Phone Number → Options*
+
+- **Default country** for numbers without a country code: Switzerland, Liechtenstein, Germany, Austria, France,
+  Italy, Netherlands, Belgium, Luxembourg, United Kingdom, Spain, Portugal, USA/Canada
+- **Format**: with spaces (`+41 44 123 45 67`) or without (`+41441234567`)
 
 ## Installation
 
@@ -31,12 +41,16 @@ Requires Thunderbird 115 or newer.
 - `menus` – context menu entry
 - `clipboardWrite` – copy the number
 - `notifications` – short confirmation showing the copied number
+- `storage` – remember the options
 
 No data leaves your computer.
 
 ## Version history
 
-### v1.0.6
+### v1.1.0
+- International: the country is detected from +CC / 00CC, national numbers use a default country (Switzerland unless changed)
+- Options page: default country (13 countries) and format with or without spaces
+- Renamed from "Copy Phone Number (Swiss)" to "Copy Phone Number"
 - No upper Thunderbird version limit, so new Thunderbird releases no longer disable the add-on
 
 ### v1.0.5

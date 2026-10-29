@@ -1,8 +1,8 @@
 {
   "manifest_version": 2,
-  "name": "Copy Phone Number (Swiss)",
-  "description": "Adds a right-click menu item to copy a phone number (from tel: links or selected text) to the clipboard, formatted as +41 XX XXX XX XX.",
-  "version": "1.0.6",
+  "name": "Copy Phone Number",
+  "description": "Adds a right-click menu item to copy a phone number (from tel: links or selected text) to the clipboard in international format. Country is detected from the number; default for national numbers: Switzerland (+41 XX XXX XX XX).",
+  "version": "1.1.0",
   "author": "C|E|S Catering & Event Services",
   "browser_specific_settings": {
     "gecko": {
@@ -13,10 +13,12 @@
   "permissions": [
     "menus",
     "clipboardWrite",
-    "notifications"
+    "notifications",
+    "storage"
   ],
   "background": {
     "scripts": [
+      "phone.js",
       "background.js"
     ]
   },
@@ -24,5 +26,9 @@
   "icons": {
     "48": "icons/icon.svg",
     "96": "icons/icon.svg"
+  },
+  "options_ui": {
+    "page": "options/options.html",
+    "open_in_tab": false
   }
 }

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <title>Copy Phone Number – Einstellungen</title>
+  <link rel="stylesheet" href="options.css">
+</head>
+<body>
+  <h1>Copy Phone Number</h1>
+
+  <label for="country">Land für Nummern ohne Ländervorwahl</label>
+  <select id="country"></select>
+  <p class="hint">
+    Nummern mit +… oder 00… werden automatisch dem richtigen Land zugeordnet.
+    Diese Einstellung gilt nur für nationale Nummern wie 044 123 45 67.
+  </p>
+
+  <fieldset>
+    <legend>Format</legend>
+    <label><input type="radio" name="style" value="spaced"> Mit Leerzeichen <span class="example" id="example-spaced"></span></label>
+    <label><input type="radio" name="style" value="compact"> Ohne Leerzeichen <span class="example" id="example-compact"></span></label>
+  </fieldset>
+
+  <p class="status" id="status" aria-live="polite"></p>
+
+  <script src="../phone.js"></script>
+  <script src="options.js"></script>
+</body>
+</html>
