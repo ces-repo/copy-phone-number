@@ -36,6 +36,9 @@ No data leaves your computer.
 
 ## Version history
 
+### v1.0.6
+- No upper Thunderbird version limit, so new Thunderbird releases no longer disable the add-on
+
 ### v1.0.5
 - Menu entry appears again for selected numbers that are not a tel: link (broken in 1.0.3)
 
